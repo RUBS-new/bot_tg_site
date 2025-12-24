@@ -1,0 +1,130 @@
+:root {
+    --bg-dark: #070b14;
+    --accent-blue: #007aff;
+    --star-gold: #ffb700;
+    --cell-border: #233044;
+}
+
+body {
+    background-color: var(--bg-dark);
+    background-image: radial-gradient(circle at 50% 50%, rgba(0, 122, 255, 0.1) 0%, transparent 80%);
+    color: white;
+    font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    overflow: hidden;
+}
+
+.logo {
+    width: 130px;
+    margin-bottom: 30px;
+    filter: drop-shadow(0 0 15px rgba(0, 122, 255, 0.4));
+}
+
+.game-wrapper {
+    background: rgba(21, 28, 44, 0.9);
+    padding: 15px;
+    border-radius: 24px;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    box-shadow: 0 15px 40px rgba(0,0,0,0.6);
+    margin-bottom: 25px;
+}
+
+.grid {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 10px;
+}
+
+.cell {
+    width: 54px;
+    height: 54px;
+    background: linear-gradient(145deg, #1c293d, #0e1624);
+    border-radius: 12px;
+    border: 1px solid var(--cell-border);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+}
+
+.cell.active {
+    background: var(--star-gold);
+    border: none;
+    box-shadow: 0 0 20px rgba(255, 183, 0, 0.5), inset 0 0 8px rgba(255,255,255,0.4);
+    transform: scale(1.08);
+    animation: star-pop 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.star-icon {
+    width: 32px;
+    height: 32px;
+    fill: white;
+    filter: drop-shadow(0 2px 3px rgba(0,0,0,0.2));
+}
+
+@keyframes star-pop {
+    0% { transform: scale(0.4); opacity: 0; }
+    100% { transform: scale(1.08); opacity: 1; }
+}
+
+.controls {
+    width: 80%;
+    max-width: 300px;
+    background: rgba(255, 255, 255, 0.03);
+    padding: 20px;
+    border-radius: 22px;
+    border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.selector {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.arrow {
+    font-size: 26px;
+    color: var(--accent-blue);
+    cursor: pointer;
+    padding: 0 15px;
+    user-select: none;
+}
+
+.mine-info { text-align: center; }
+.mine-info b { font-size: 22px; display: block; line-height: 1; }
+.mine-info span { font-size: 11px; opacity: 0.5; text-transform: uppercase; letter-spacing: 1px; }
+
+.play-btn {
+    width: 100%;
+    height: 52px;
+    background: var(--accent-blue);
+    color: white;
+    border: none;
+    border-radius: 15px;
+    font-size: 18px;
+    font-weight: 800;
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+    transition: opacity 0.2s;
+}
+
+.play-btn:disabled {
+    background: #2d3d57;
+    color: #8a96ab;
+    cursor: not-allowed;
+}
+
+.cooldown-progress {
+    position: absolute;
+    left: 0; top: 0; bottom: 0;
+    background: rgba(255, 255, 255, 0.15);
+    width: 0%;
+}
