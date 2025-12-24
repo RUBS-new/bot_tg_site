@@ -43,7 +43,7 @@ function runPrediction() {
             cell.classList.add('active');
             cell.innerHTML = starIcon;
             if (tg.HapticFeedback) tg.HapticFeedback.impactOccurred('medium');
-        }, i * 500); 
+        }, i * 400); // Немного ускорил появление
     });
 
     handleCooldown(10);
